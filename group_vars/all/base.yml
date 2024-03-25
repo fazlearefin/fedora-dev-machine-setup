@@ -1,0 +1,141 @@
+---
+
+base_archiving_tools:
+  - arj
+  - cabextract
+  - file-roller
+  - p7zip
+  - sharutils
+  - unrar
+  - unzip
+  - uudeview
+  - zip
+  - bzip2
+  - bzip3
+  - gzip
+
+base_productivity_tools:
+  - libreoffice
+
+base_system_tools:
+  - fatrace
+  - fdupes
+  - gnome-calculator
+  - progress
+  - pwgen
+  #- syncthing
+
+base_system_tools_laptop:
+  - powertop
+  - tlp
+  - tlp-rdw
+
+base_download_tools:
+  - aria2
+  - axel
+  - transmission
+  - speedtest-cli
+  - wget
+  - yt-dlp
+  - yt-dlp-zsh-completion
+
+base_developer_tools:
+  - '@Development Tools'
+  - 2to3
+  - android-tools
+  - ansible
+  - ansible-lint
+  - awscli
+  - bat
+  - bpython
+  - black
+  - btop
+  - cloc
+  - clusterssh
+  - python3-csvkit
+  - curl
+  - dos2unix
+  - duf
+  - entr
+  - exa
+  - expect
+  - filezilla
+  - fzf
+  - g++
+  - gawk
+  - apostrophe
+  - git
+  - git-extras
+  - gitg
+  - golang-go
+  - htop
+  - httpie
+  - inotify-tools
+  - jq
+  - makeself
+  - meld
+  - miller
+  - moreutils
+  - most
+  - ncat
+  - nmap
+  - nmon
+  - nodejs
+  - pandoc
+  - parallel
+  - pcre2-tools  # provides pcre2grep and pcre2test (perl-compatible regex)
+  - poetry
+  - powerline
+  - pssh
+  - ptpython
+  - pv
+  - pylint
+  - python3-demjson  # provides jsonlint-py3 for json lint
+  - python3-jmespath
+  - python3-pip
+  - python3-poetry
+  - python3-autopep8
+  - ranger
+  - rclone
+  - recode
+  - remmina
+  - renameutils
+  - ripgrep  # launch using rg from the cli
+  - ruby
+  - shellcheck
+  - siege
+  - socat
+  - sshfs
+  - sshpass
+  - sshuttle
+  - tig
+  - tilix
+  - tmux
+  - python3-tmuxp
+  - tree
+  - uget
+  - xsel
+  - yamllint
+  - zeal
+
+base_developer_tools_pip3:
+  - tldr
+  - ruff
+
+base_media_tools:
+  - ffmpeg-free
+  - gimp
+  - ImageMagick
+  - mediainfo
+  - soundconverter
+  - totem
+  - vlc
+
+base_permanent_night_light:
+  night_light_enabled: False              # set this to True for permanently turning on night light
+  night_light_schedule_automatic: False
+  night_light_schedule_from: 0
+  night_light_schedule_to: 24
+  night_light_temperature: 4200
+
+...

@@ -1,0 +1,25 @@
+---
+
+- name: add vscode rpm key
+  ansible.builtin.rpm_key:
+    key: "{{ vscode_rpm_key_url }}"
+
+- name: add vscode repo
+  ansible.builtin.yum_repository:
+    name: code
+    description: Visual Studio Code
+    baseurl: "{{ vscode_yum_repository_url }}"
+    gpgcheck: yes
+    file: "{{ vscode_package_name }}"
+
+- name: install latest visual studio code
+  ansible.builtin.dnf:
+    name: "{{ vscode_package_name }}"
+
+- name: install some popular vscode extensions
+  ansible.builtin.command: code --install-extension {{ item }}
+  with_items: "{{ vscode_extensions }}"
+  become: yes
+  become_user: "{{ local_username }}"
+
+...

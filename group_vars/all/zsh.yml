@@ -1,0 +1,8 @@
+---
+
+zsh_packages:
+  - zsh
+
+zsh_antigen_git_repo: https://github.com/zsh-users/antigen.git
+
+...

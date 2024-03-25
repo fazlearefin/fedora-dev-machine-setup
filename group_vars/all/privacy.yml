@@ -1,0 +1,9 @@
+---
+
+privacy_packages:
+  - mat2
+  - proxychains-ng
+  - tor
+  - torsocks
+
+...

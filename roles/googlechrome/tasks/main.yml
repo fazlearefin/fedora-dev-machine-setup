@@ -1,0 +1,19 @@
+---
+
+- name: add googlechrome rpm key
+  ansible.builtin.rpm_key:
+    key: "{{ googlechrome_rpm_key_url }}"
+
+- name: add google chrome repo
+  ansible.builtin.yum_repository:
+    description: google-chrome
+    baseurl: "{{ googlechrome_yum_repository_url }}"
+    gpgcheck: yes
+    file: google-chrome
+    name: google-chrome
+
+- name: install latest google chrome
+  ansible.builtin.dnf:
+    name: google-chrome-stable
+
+...

@@ -1,0 +1,152 @@
+---
+
+- block:
+
+  - name: ensure firewalld service is running and enabled on boot
+    ansible.builtin.systemd:
+      name: firewalld
+      state: started
+      enabled: true
+
+  - name: enable firewall
+    ansible.posix.firewalld:
+      state: enabled
+      permanent: true
+
+# It may be desirable to set this to zero, so that application memory is retained as long as possible at the expense
+# of the page cache. When there is still a memory shortage, the kernel can still use swapping.
+- name: tune system swappiness
+  ansible.posix.sysctl:
+    name: vm.swappiness
+    value: '0'
+    state: present
+
+- name: reduce space used by journald
+  ansible.builtin.lineinfile:
+    path: /etc/systemd/journald.conf
+    regexp: '^#SystemMaxUse=$'
+    line: SystemMaxUse=256M
+
+- name: update all installed packages to latest
+  ansible.builtin.dnf:
+    update_only: true
+    state: latest
+
+- name: install archiving tools
+  ansible.builtin.dnf:
+    name: "{{ base_archiving_tools }}"
+    state: present
+
+- name: install productivity tools
+  ansible.builtin.dnf:
+    name: "{{ base_productivity_tools }}"
+    state: present
+
+- name: install system tools
+  ansible.builtin.dnf:
+    name: "{{ base_system_tools }}"
+    state: present
+
+- name: install system tools for laptop
+  ansible.builtin.dnf:
+    name: "{{ base_system_tools_laptop }}"
+    state: present
+  when: laptop_mode
+
+- name: install developer tools
+  ansible.builtin.dnf:
+    name: "{{ base_developer_tools }}"
+    state: present
+
+- name: install developer tools pip3 packages
+  ansible.builtin.pip:
+    name: "{{ base_developer_tools_pip3 }}"
+    executable: pip3
+
+- name: create .ssh dir
+  ansible.builtin.file:
+    path: "~{{ local_username }}/.ssh"
+    state: directory
+    mode: '0700'
+  become: yes
+  become_user: "{{ local_username }}"
+
+- block:
+    - name: Create directories for golang
+      ansible.builtin.file:
+        path: "~{{ local_username }}/{{ item }}"
+        state: directory
+      with_items:
+        - go
+        - go/src
+        - go/bin
+
+    - name: Make GOPATH available in .bashrc
+      ansible.builtin.lineinfile:
+        path: "~{{ local_username }}/.bashrc"
+        line: "{{ item }}"
+        create: yes
+      with_items:
+        - export GOPATH=$HOME/go
+        - export PATH=$PATH:$GOPATH/bin
+  become: yes
+  become_user: "{{ local_username }}"
+
+- name: install download tools
+  ansible.builtin.dnf:
+    name: "{{ base_download_tools }}"
+    state: present
+
+- name: install media packages
+  ansible.builtin.dnf:
+    name: "{{ base_media_tools }}"
+    state: present
+
+- name: Enable permanent night light settings
+  ansible.builtin.command: "gsettings set org.gnome.settings-daemon.plugins.color {{ item.key }} {{ item.value }}"
+  loop:
+    - { key: 'night-light-enabled', value: "{{ base_permanent_night_light.night_light_enabled | string | lower }}" }
+    - { key: 'night-light-schedule-automatic', value: "{{ base_permanent_night_light.night_light_schedule_automatic | string | lower }}" }
+    - { key: 'night-light-schedule-from', value: "{{ base_permanent_night_light.night_light_schedule_from }}" }
+    - { key: 'night-light-schedule-to', value: "{{ base_permanent_night_light.night_light_schedule_to }}" }
+    - { key: 'night-light-temperature', value: "{{ base_permanent_night_light.night_light_temperature }}" }
+
+  when: base_permanent_night_light.night_light_enabled
+  become: yes
+  become_user: "{{ local_username }}"
+
+# make fstrim run daily rather than the default weekly schedule for SSD longevity
+- block:
+    - name: enable fstrim.timer
+      ansible.builtin.systemd:
+        name: fstrim.timer
+        state: started
+        enabled: yes
+
+    - name: create systemd fstrim.timer override dir
+      ansible.builtin.file:
+        path: /etc/systemd/system/fstrim.timer.d
+        state: directory
+        owner: root
+        group: root
+        mode: 0755
+
+    - name: create override.conf file for fstrim.timer
+      ansible.builtin.copy:
+        src: etc/systemd/system/fstrim.timer.d/override.conf
+        dest: /etc/systemd/system/fstrim.timer.d/override.conf
+        owner: root
+        group: root
+        mode: 0644
+
+    - name: force systemd to reread configs
+      ansible.builtin.systemd:
+        daemon_reload: yes
+
+- name: make poetry create virtualenv dirs inside the project dir itself
+  ansible.builtin.command: "poetry config virtualenvs.in-project true"
+  become: yes
+  become_user: "{{ local_username }}"
+
+...
+

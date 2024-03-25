@@ -1,0 +1,14 @@
+---
+
+- name: install security packages
+  ansible.builtin.dnf:
+    name: "{{ security_packages }}"
+    state: present
+
+- name: ensure clamav-freshclam is enabled on boot
+  ansible.builtin.systemd_service:
+    state: started
+    enabled: true
+    name: clamav-freshclam
+
+...
