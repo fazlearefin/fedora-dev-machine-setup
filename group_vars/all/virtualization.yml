@@ -1,6 +1,7 @@
 ---
 
 virtualization_docker_repo_file_url: https://download.docker.com/linux/fedora/docker-ce.repo
+virtualization_docker_rpm_key_url: https://download.docker.com/linux/fedora/gpg
 virtualization_docker_packages:
   - docker-ce
   - docker-ce-cli
@@ -9,6 +10,7 @@ virtualization_docker_packages:
   - docker-compose-plugin
 
 virtualization_virtualbox_repo_file_url: https://download.virtualbox.org/virtualbox/rpm/fedora/virtualbox.repo
+virtualization_virtualbox_rpm_key_url: https://www.virtualbox.org/download/oracle_vbox_2016.asc
 virtualization_virtualbox_packages:
   - VirtualBox-7.0
   - virtualbox-guest-additions

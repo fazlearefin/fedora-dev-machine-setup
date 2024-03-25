@@ -48,6 +48,7 @@ base_developer_tools:
   - ansible-lint
   - awscli
   - bat
+  - bats  # bash automated testing system
   - bpython
   - black
   - btop
