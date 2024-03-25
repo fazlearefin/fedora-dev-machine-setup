@@ -4,10 +4,10 @@
   tasks:
     - name: remove redundant packages
       ansible.builtin.dnf:
-          autoremove: yes
+          autoremove: true
 
     - name: display post install message
-      debug:
+      ansible.builtin.debug:
         msg:
           - 'Manual steps left to do:'
           - '- git clone the dotfiles repo (optional)'

@@ -58,17 +58,19 @@
     name: "{{ base_developer_tools }}"
     state: present
 
-- name: install developer tools pip3 packages
-  ansible.builtin.pip:
-    name: "{{ base_developer_tools_pip3 }}"
-    executable: pip3
+- name: install developer tools pipx packages
+  community.general.pipx:
+    name: "{{ item }}"
+  with_items: "{{ base_developer_tools_pipx }}"
+  become: true
+  become_user: "{{ local_username }}"
 
 - name: create .ssh dir
   ansible.builtin.file:
     path: "~{{ local_username }}/.ssh"
     state: directory
     mode: '0700'
-  become: yes
+  become: true
   become_user: "{{ local_username }}"
 
 - block:
@@ -89,7 +91,7 @@
       with_items:
         - export GOPATH=$HOME/go
         - export PATH=$PATH:$GOPATH/bin
-  become: yes
+  become: true
   become_user: "{{ local_username }}"
 
 - name: install download tools
@@ -112,7 +114,7 @@
     - { key: 'night-light-temperature', value: "{{ base_permanent_night_light.night_light_temperature }}" }
 
   when: base_permanent_night_light.night_light_enabled
-  become: yes
+  become: true
   become_user: "{{ local_username }}"
 
 # make fstrim run daily rather than the default weekly schedule for SSD longevity
@@ -148,5 +150,27 @@
   become: yes
   become_user: "{{ local_username }}"
 
-...
+- name: build and install golang binaries
+  ansible.builtin.command: "go install {{ item }}"
+  with_items: "{{ golang_tools }}"
+  become: true
+  become_user: "{{ local_username }}"
 
+# obsidian markdown editor
+- block:
+    - name: Fetch latest Obsidian .rpm file URL
+      ansible.builtin.uri:
+        url: "{{ base_obsidian_download_base_url }}"
+        return_content: yes
+      register: obsidian_latest_release
+
+    - name: Extract Obsidian .rpm file URL
+      ansible.builtin.set_fact:
+        obsidian_rpm_url:  "{{ obsidian_latest_release.json.assets | selectattr('name', 'match', '.*\\.rpm$') | map(attribute='browser_download_url') | first }}"
+
+    - name: Download and install Obsidian
+      ansible.builtin.dnf:
+        name: "{{ obsidian_rpm_url }}"
+        state: present
+
+...

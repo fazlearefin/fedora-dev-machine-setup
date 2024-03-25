@@ -24,7 +24,7 @@ base_system_tools:
   - gnome-calculator
   - progress
   - pwgen
-  #- syncthing
+#  - syncthing
 
 base_system_tools_laptop:
   - powertop
@@ -51,15 +51,15 @@ base_developer_tools:
   - bats  # bash automated testing system
   - bpython
   - black
-  - btop
+  - cargo
+  - btop  # Modern and colorful command line resource monitor that shows usage and stats
   - cloc
   - clusterssh
   - python3-csvkit
   - curl
   - dos2unix
-  - duf
+  - duf  # Disk Usage/Free Utility
   - entr
-  - exa
   - expect
   - filezilla
   - fzf
@@ -87,7 +87,6 @@ base_developer_tools:
   - parallel
   - pcre2-tools  # provides pcre2grep and pcre2test (perl-compatible regex)
   - poetry
-  - powerline
   - pssh
   - ptpython
   - pv
@@ -97,6 +96,7 @@ base_developer_tools:
   - python3-pip
   - python3-poetry
   - python3-autopep8
+  - qemu-tools
   - ranger
   - rclone
   - recode
@@ -111,7 +111,7 @@ base_developer_tools:
   - sshpass
   - sshuttle
   - tig
-  - tilix
+  - tilix  # A tiling terminal emulator for Linux using GTK+ 3
   - tmux
   - python3-tmuxp
   - tree
@@ -120,7 +120,8 @@ base_developer_tools:
   - yamllint
   - zeal
 
-base_developer_tools_pip3:
+# uses pipx to install python pip packages in a virtualized environment
+base_developer_tools_pipx:
   - tldr
   - ruff
 
@@ -133,11 +134,17 @@ base_media_tools:
   - totem
   - vlc
 
+golang_tools:
+  - github.com/charmbracelet/glow@latest  # Render markdown on the CLI
+  - oss.terrastruct.com/d2@latest  # d2 diagram as code tool
+
 base_permanent_night_light:
-  night_light_enabled: False              # set this to True for permanently turning on night light
-  night_light_schedule_automatic: False
+  night_light_enabled: false              # set this to true for permanently turning on night light
+  night_light_schedule_automatic: false
   night_light_schedule_from: 0
   night_light_schedule_to: 24
   night_light_temperature: 4200
+
+base_obsidian_download_base_url: "https://api.github.com/repos/obsidianmd/obsidian-releases/releases/latest"
 
 ...

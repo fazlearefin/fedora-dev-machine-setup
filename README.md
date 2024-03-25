@@ -24,8 +24,10 @@ Summary of packages that get installed and configured based on roles:
   - install archiving tools like zip, rar, etc
   - install libreoffice
   - install foliate, an ebook reader
+  - install apostrophe and Obsidian markdown editors
   - install power management tools like [TLP](https://github.com/linrunner/TLP)
   - install development related packages like android-tools, awscli, httpie, clusterssh, docker, filezilla, golang, pipenv, etc
+  - install code fomatters and linters like black, ruff, ansible-lint, etc
   - setup golang directories
   - install download tools like axel, transmission, wget, aria2
   - install image, audio and video packages like vlc, totem, gimp, imagemagick, etc
