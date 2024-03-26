@@ -160,6 +160,5 @@
   community.general.flatpak:
     name: "{{ base_flatpak_flathub_apps }}"
     state: present
-    method: user
 
 ...
