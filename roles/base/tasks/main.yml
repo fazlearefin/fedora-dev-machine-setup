@@ -156,21 +156,10 @@
   become: true
   become_user: "{{ local_username }}"
 
-# obsidian markdown editor
-- block:
-    - name: Fetch latest Obsidian .rpm file URL
-      ansible.builtin.uri:
-        url: "{{ base_obsidian_download_base_url }}"
-        return_content: yes
-      register: obsidian_latest_release
-
-    - name: Extract Obsidian .rpm file URL
-      ansible.builtin.set_fact:
-        obsidian_rpm_url:  "{{ obsidian_latest_release.json.assets | selectattr('name', 'match', '.*\\.rpm$') | map(attribute='browser_download_url') | first }}"
-
-    - name: Download and install Obsidian
-      ansible.builtin.dnf:
-        name: "{{ obsidian_rpm_url }}"
-        state: present
+- name: install flatpak apps from flathub
+  community.general.flatpak:
+    name: "{{ base_flatpak_flathub_apps }}"
+    state: present
+    method: user
 
 ...
