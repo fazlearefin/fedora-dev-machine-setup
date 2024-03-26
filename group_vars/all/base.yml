@@ -24,6 +24,8 @@ base_system_tools:
   - gnome-calculator
   - progress
   - pwgen
+  - gnome-extensions-app
+  - gnome-shell-extension-dash-to-dock
 #  - syncthing
 
 base_system_tools_laptop:
