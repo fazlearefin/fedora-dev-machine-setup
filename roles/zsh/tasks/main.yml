@@ -15,6 +15,7 @@
       ansible.builtin.git:
         repo: "{{ zsh_antigen_git_repo }}"
         dest: "~{{ local_username }}/.antigen"
+        version: v2.2.3
 
     - name: check if .zshrc exists in user's home dir
       ansible.builtin.stat:
@@ -25,12 +26,14 @@
       ansible.builtin.copy:
         src: "~{{ local_username }}/.zshrc"
         dest: "~{{ local_username }}/.zshrc.orig"
+        mode: '0644'
       when: dotzshrc.stat.exists
 
     - name: copy the sample .zshrc file
       ansible.builtin.copy:
         src: .zshrc
         dest: "~{{ local_username }}/.zshrc"
+        mode: '0644'
         force: yes
   become: true
   become_user: "{{ local_username }}"

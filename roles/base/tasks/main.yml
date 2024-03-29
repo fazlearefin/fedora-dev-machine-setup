@@ -147,7 +147,7 @@
 
 - name: make poetry create virtualenv dirs inside the project dir itself
   ansible.builtin.command: "poetry config virtualenvs.in-project true"
-  become: yes
+  become: true
   become_user: "{{ local_username }}"
 
 - name: build and install golang binaries
