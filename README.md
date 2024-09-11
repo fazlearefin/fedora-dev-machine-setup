@@ -1,4 +1,4 @@
-# fedora-dev-machine-setup | Fedora 39
+# fedora-dev-machine-setup | Fedora Workstation 40
 
 ## Description
 
@@ -6,7 +6,7 @@ This repo contains Ansible playbooks to configure your system as a development m
 
 The playbooks have been tested on:
 
-- **Fedora 39**
+- **Fedora Workstation 40**
 
 ---
 
