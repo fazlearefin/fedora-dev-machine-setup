@@ -63,6 +63,7 @@ base_developer_tools:
   - curl
   - dos2unix
   - duf  # Disk Usage/Free Utility
+  - difftastic  # Structural diff that understands syntax
   - entr
   - expect
   - filezilla
