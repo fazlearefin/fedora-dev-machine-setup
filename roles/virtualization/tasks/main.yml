@@ -43,6 +43,14 @@
     ansible.builtin.dnf:
       name: "{{ virtualization_virtualbox_packages }}"
 
+  - name: Download virtualbox extension pack
+    ansible.builtin.get_url:
+        url: "{{ virtualization_virtualbox_extension_pack.remote_url }}"
+        dest: "{{ virtualization_virtualbox_extension_pack.local_path }}"
+
+  - name: Install Virtualbox Extension Pack
+    ansible.builtin.command: bash -c "yes y | VBoxManage extpack install --replace {{ virtualization_virtualbox_extension_pack.local_path }}"
+
   - name: enable virtualbox service on boot
     ansible.builtin.systemd:
       name: vboxservice.service
