@@ -33,7 +33,7 @@ Summary of packages that get installed and configured based on roles:
   - install image, audio and video packages like vlc, totem, gimp, imagemagick, etc
   - install and configure ssh server if not set to `laptop_mode`
   - option to turn on night light settings for eye comfort (set `base_permanent_night_light.night_light_enabled` to `True`)
-  - enable `fzf` fuzzy finder in zsh terminal; check out this [YouTube video](https://www.youtube.com/watch?v=1a5NiMhqAR0) to see how to use it
+  - enable `fzf` fuzzy finder in zsh terminal
 - **role: hashicorp**
   - install vagrant, terraform, packer
 - **role: terminal_customizations**
