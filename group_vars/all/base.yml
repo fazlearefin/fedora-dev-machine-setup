@@ -5,6 +5,7 @@ base_archiving_tools:
   - cabextract
   - file-roller
   - p7zip
+  - p7zip-plugins
   - sharutils
   - unrar
   - unzip
