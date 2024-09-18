@@ -29,13 +29,36 @@
       ansible.builtin.copy:
         src: tilix.dconf
         dest: /tmp/tilix.dconf
-        force: yes
+        force: true
 
     - name: import modified tilix config
       ansible.builtin.shell: dconf load /com/gexperts/Tilix/ < /tmp/tilix.dconf
       ignore_errors: true
   become: true
   become_user: "{{ local_username  }}"
+
+- block:
+    - name: Create alacritty config directory
+      ansible.builtin.file:
+        path: "~{{ local_username }}/.config/alacritty"
+        state: directory
+        mode: '0755'
+        owner: "{{ local_username }}"
+        group: "{{ local_username }}"
+
+    - name: Clone alacritty themes git repo
+      ansible.builtin.git:
+        repo: "{{ terminal_customizations_alacritty_themes_repo }}"
+        dest: "~{{ local_username }}/.config/alacritty/themes"
+        clone: true
+
+    - name: Copy sample alacritty config file
+      ansible.builtin.copy:
+        src: alacritty.toml
+        dest: "~{{ local_username }}/.config/alacritty/alacritty.toml"
+        mode: '0644'
+  become: true
+  become_user: "{{ local_username }}"
 
 # setup tmux configs and plugins
 - block:
@@ -61,7 +84,7 @@
       ansible.builtin.copy:
         src: .tmux.conf
         dest: "~{{ local_username }}/.tmux.conf"
-        force: yes
+        force: true
 
     - name: install all required tmux plugins
       ansible.builtin.shell: "~{{local_username}}/.tmux/plugins/tpm/scripts/install_plugins.sh"
