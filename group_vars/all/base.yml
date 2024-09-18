@@ -39,7 +39,6 @@ base_download_tools:
   - aria2
   - axel
   - transmission
-  - speedtest-cli
   - wget
   - yt-dlp
   - yt-dlp-zsh-completion
@@ -132,7 +131,6 @@ base_developer_tools:
 
 # uses pipx to install python pip packages in a virtualized environment
 base_developer_tools_pipx:
-  - tldr
   - ruff
 
 base_media_tools:
