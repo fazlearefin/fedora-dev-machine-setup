@@ -120,7 +120,7 @@ base_developer_tools:
   - stow  # symlink manager
   - tig
   - tilix  # A tiling terminal emulator for Linux using GTK+ 3
-  - blackbox-terminal
+#  - blackbox-terminal
   - tmux
   - python3-tmuxp
   - tree
