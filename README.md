@@ -37,8 +37,14 @@ Summary of packages that get installed and configured based on roles:
   - install [lazygit](https://github.com/jesseduffield/lazygit)
   - install terminal emulators Tilix and Alacritty
   - install dive, a tool for exploring each layer in a docker image
-- **role: hashicorp**
-  - install vagrant, terraform, packer
+- **role: zsh**
+  - install zsh package and set user shell to zsh
+  - install antigen zsh plugin manager
+  - copy and enable sample `~/.zshrc` file if one does not exist
+    - contains function to stop ssh-agent from asking for encrypted ssh key password repeatedly when launching new terminal
+    - adds additional shell aliases and functions in `~/.shell_aliases` and `~/.shell_functions`
+  - install ohmyzsh/ohmyzsh and enable some bundled plugins
+  - enable bullet train zsh theme (others like p10k can be configured as well)
 - **role: terminal_customizations**
   - download and install some nerd fonts from ryanoasis/nerd-fonts; these are mono fonts ideal for use in terminal or programming editors
   - copy and enable sample tilix config file with configured nerd font
@@ -55,17 +61,6 @@ Summary of packages that get installed and configured based on roles:
   - install neovim packages
   - install [lazyvim](https://www.lazyvim.org) neovim distribution
     - open `nvim` from terminal and let the plugins get installed automatically on the initial launch
-- **role: zsh**
-  - install zsh package and set user shell to zsh
-  - install antigen zsh plugin manager
-  - copy and enable sample `~/.zshrc` file if one does not exist
-    - contains function to stop ssh-agent from asking for encrypted ssh key password repeatedly when launching new terminal
-    - adds additional shell aliases and functions in `~/.shell_aliases` and `~/.shell_functions`
-  - install ohmyzsh/ohmyzsh and enable some bundled plugins
-  - enable bullet train zsh theme (others like p10k can be configured as well)
-- **role: googlechrome**
-  - add Google Chrome apt repo
-  - install Google Chrome
 - **role: vscode**
   - add Visual Studio Code apt repo
   - install Visual Studio Code
@@ -84,6 +79,11 @@ Summary of packages that get installed and configured based on roles:
 - **role: virtualization**
   - enable docker ce repo and install docker packages
   - enable Oracle VirtualBox repo and install virtualbox packages
+- **role: hashicorp**
+  - install vagrant, terraform, packer
+- **role: googlechrome**
+  - add Google Chrome apt repo
+  - install Google Chrome
 
 ---
 
