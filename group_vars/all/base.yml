@@ -155,6 +155,8 @@ base_permanent_night_light:
   night_light_schedule_to: 24
   night_light_temperature: 4200
 
+base_flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
+
 base_flatpak_flathub_apps:
   - md.obsidian.Obsidian
 
