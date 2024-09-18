@@ -139,10 +139,9 @@ export PIPENV_VENV_IN_PROJECT=1
 export VAGRANT_DEFAULT_PROVIDER='virtualbox'
 
 # extra aliases, functions and variables can be defined in these files
-[[ -f ~/.shell_aliases ]] && source ~/.shell_aliases.sh
-[[ -f ~/.shell_functions ]] && source ~/.shell_functions.sh
-[[ -f ~/.shell_variables ]] && source ~/.shell_variables.sh
+[[ -f ~/.shell_aliases.sh ]] && source ~/.shell_aliases.sh
+[[ -f ~/.shell_functions.sh ]] && source ~/.shell_functions.sh
+[[ -f ~/.shell_variables.sh ]] && source ~/.shell_variables.sh
 
-# enable fzf fuzzy finder completions in the terminal
-[ -f /usr/share/doc/fzf/examples/key-bindings.zsh ] && source /usr/share/doc/fzf/examples/key-bindings.zsh    #fzf
-[ -f /usr/share/doc/fzf/examples/completion.zsh ] && source /usr/share/doc/fzf/examples/completion.zsh        #fzf
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
