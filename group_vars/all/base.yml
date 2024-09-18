@@ -147,6 +147,10 @@ base_golang_tools:
   - github.com/jesseduffield/lazygit@latest  # simple terminal UI for git commands
   #- oss.terrastruct.com/d2@latest  # d2 diagram as code tool
 
+base_cargo_packages:
+  - tlrc  # official tldr rust client
+  - xh  # drop-in replacement for httpie/http
+
 base_permanent_night_light:
   night_light_enabled: false              # set this to true for permanently turning on night light
   night_light_schedule_automatic: false

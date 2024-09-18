@@ -150,6 +150,15 @@
   become: true
   become_user: "{{ local_username }}"
 
+- name: Build and install cargo packages
+  community.general.cargo:
+    name: "{{ item }}"
+    locked: true
+    state: latest
+  with_items: "{{ base_cargo_packages }}"
+  become: true
+  become_user: "{{ local_username }}"
+
 - block:
     - name: Add the flathub flatpak repository remote to the user installation
       community.general.flatpak_remote:
