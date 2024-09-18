@@ -1,4 +1,4 @@
-# fedora-dev-machine-setup | Fedora 39
+# fedora-dev-machine-setup | Fedora Workstation 40
 
 ## Description
 
@@ -6,13 +6,13 @@ This repo contains Ansible playbooks to configure your system as a development m
 
 The playbooks have been tested on:
 
-- **Fedora 39**
+- **Fedora Workstation 40**
 
 ---
 
 ## What gets installed and cofigured?
 
-I am a DevSecOps Engineer (focusing on Linux) and my daily job include working with various config management using Ansible. So if you are in a similar profession the installed system will suit your needs. It is also easy to extend using Ansible roles.
+I am a DevSecOps Engineer and my daily job include working with AWS, docker, ansible, terraform, etc. So if you are in a similar profession the installed system will suit your needs. It is also easy to extend using Ansible roles.
 
 Summary of packages that get installed and configured based on roles:
 
@@ -23,10 +23,10 @@ Summary of packages that get installed and configured based on roles:
   - upgrade all packages
   - install archiving tools like zip, rar, etc
   - install libreoffice
-  - install foliate, an ebook reader
-  - install apostrophe and Obsidian markdown editors
+  - install foliate, an e-book reader
+  - install glow, apostrophe and Obsidian markdown viewers/editors
   - install power management tools like [TLP](https://github.com/linrunner/TLP)
-  - install development related packages like android-tools, awscli, httpie, clusterssh, docker, filezilla, golang, pipenv, etc
+  - install development related packages like android-tools, awscli, httpie, clusterssh, docker, filezilla, golang, poetry, etc
   - install code fomatters and linters like black, ruff, ansible-lint, etc
   - setup golang directories
   - install download tools like axel, transmission, wget, aria2
@@ -53,6 +53,7 @@ Summary of packages that get installed and configured based on roles:
   - install antigen zsh plugin manager
   - copy and enable sample `~/.zshrc` file if one does not exist
     - contains function to stop ssh-agent from asking for encrypted ssh key password repeatedly when launching new terminal
+    - adds additional shell aliases and functions in `~/.shell_aliases` and `~/.shell_functions`
   - install ohmyzsh/ohmyzsh and enable some bundled plugins
   - enable bullet train zsh theme (others like p10k can be configured as well)
 - **role: googlechrome**

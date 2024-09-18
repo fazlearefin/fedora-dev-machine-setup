@@ -17,6 +17,7 @@ base_archiving_tools:
 base_productivity_tools:
   - libreoffice
   - foliate
+  - qalculate
 
 base_system_tools:
   - fatrace
@@ -26,6 +27,7 @@ base_system_tools:
   - pwgen
   - gnome-extensions-app
   - gnome-shell-extension-dash-to-dock
+  - trash-cli
 #  - syncthing
 
 base_system_tools_laptop:
@@ -61,6 +63,7 @@ base_developer_tools:
   - curl
   - dos2unix
   - duf  # Disk Usage/Free Utility
+  - difftastic  # Structural diff that understands syntax
   - entr
   - expect
   - filezilla
@@ -69,6 +72,7 @@ base_developer_tools:
   - gawk
   - apostrophe
   - git
+  - git-delta
   - git-extras
   - gitg
   - golang-go
@@ -81,8 +85,9 @@ base_developer_tools:
   - miller
   - moreutils
   - most
-  - ncat
+  - mtr
   - nmap
+  - nmap-ncat
   - nmon
   - nodejs
   - pandoc
@@ -113,8 +118,10 @@ base_developer_tools:
   - sshfs
   - sshpass
   - sshuttle
+  - stow  # symlink manager
   - tig
   - tilix  # A tiling terminal emulator for Linux using GTK+ 3
+  - blackbox-terminal
   - tmux
   - python3-tmuxp
   - tree
@@ -139,7 +146,7 @@ base_media_tools:
 
 golang_tools:
   - github.com/charmbracelet/glow@latest  # Render markdown on the CLI
-  - oss.terrastruct.com/d2@latest  # d2 diagram as code tool
+  #- oss.terrastruct.com/d2@latest  # d2 diagram as code tool
 
 base_permanent_night_light:
   night_light_enabled: false              # set this to true for permanently turning on night light
@@ -147,6 +154,8 @@ base_permanent_night_light:
   night_light_schedule_from: 0
   night_light_schedule_to: 24
   night_light_temperature: 4200
+
+base_flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
 
 base_flatpak_flathub_apps:
   - md.obsidian.Obsidian

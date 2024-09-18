@@ -21,12 +21,6 @@
     value: '0'
     state: present
 
-- name: reduce space used by journald
-  ansible.builtin.lineinfile:
-    path: /etc/systemd/journald.conf
-    regexp: '^#SystemMaxUse=$'
-    line: SystemMaxUse=256M
-
 - name: update all installed packages to latest
   ansible.builtin.dnf:
     update_only: true
@@ -156,9 +150,18 @@
   become: true
   become_user: "{{ local_username }}"
 
-- name: install flatpak apps from flathub
-  community.general.flatpak:
-    name: "{{ base_flatpak_flathub_apps }}"
-    state: present
+- block:
+    - name: Add the flathub flatpak repository remote to the user installation
+      community.general.flatpak_remote:
+        name: flathub
+        state: present
+        flatpakrepo_url: "{{ base_flatpakrepo_url }}"
+        method: user
+
+    - name: install flatpak apps from flathub
+      community.general.flatpak:
+        name: "{{ base_flatpak_flathub_apps }}"
+        state: present
+        method: user
 
 ...

@@ -33,7 +33,7 @@ vscode_extensions:
   - timonwong.shellcheck  # shellcheck linter for sh/bash/dash/ksh scripts
   - Catppuccin.catppuccin-vsc  # Catppuccin theme
   - Catppuccin.catppuccin-vsc-icons  # Catppuccin icons
-  - terrastruct.d2  # diagram scripting language that turns text to diagrams
+#  - terrastruct.d2  # diagram scripting language that turns text to diagrams
 #  - rust-lang.rust-analyzer  # rust linter
 
 ...
