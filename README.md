@@ -34,6 +34,7 @@ Summary of packages that get installed and configured based on roles:
   - install and configure ssh server if not set to `laptop_mode`
   - option to turn on night light settings for eye comfort (set `base_permanent_night_light.night_light_enabled` to `True`)
   - enable `fzf` fuzzy finder in zsh terminal
+  - install [lazygit](https://github.com/jesseduffield/lazygit)
 - **role: hashicorp**
   - install vagrant, terraform, packer
 - **role: terminal_customizations**
