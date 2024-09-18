@@ -122,6 +122,9 @@ else
 fi
 ##### } END Fix for ssh-agent
 
+# cargo/rust
+export PATH=$PATH:$HOME/.cargo/bin
+
 # golang
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
