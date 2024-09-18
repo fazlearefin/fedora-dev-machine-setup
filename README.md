@@ -35,6 +35,8 @@ Summary of packages that get installed and configured based on roles:
   - option to turn on night light settings for eye comfort (set `base_permanent_night_light.night_light_enabled` to `True`)
   - enable `fzf` fuzzy finder in zsh terminal
   - install [lazygit](https://github.com/jesseduffield/lazygit)
+  - install terminal emulators Tilix and Alacritty
+  - install dive, a tool for exploring each layer in a docker image
 - **role: hashicorp**
   - install vagrant, terraform, packer
 - **role: terminal_customizations**
