@@ -16,20 +16,23 @@ y = 10
 size = 10
 
 [font.normal]
-family = "MesloLGS Nerd Font Mono"
+family = "CaskaydiaCove NFM"
 style = "Regular"
 
 [font.bold]
-family = "MesloLGS Nerd Font Mono"
+family = "CaskaydiaCove NFM"
 style = "Bold"
 
 [font.italic]
-family = "MesloLGS Nerd Font Mono"
+family = "CaskaydiaCove NFM"
 style = "Italic"
 
 [font.bold_italic]
-family = "MesloLGS Nerd Font Mono"
+family = "CaskaydiaCove NFM"
 style = "Bold Italic"
+
+# TIP: to check if fonts are installed correctly, type the following in the terminal:
+#    echo -e "\e[0mRegular\e[1mBold\e[0;3mItalic\e[0;1;3mBoldItalic\e[0m"
 
 # uncomment below to start tmux on initial alacritty launch
 #[shell]
