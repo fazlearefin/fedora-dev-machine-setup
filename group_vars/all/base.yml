@@ -23,6 +23,8 @@ base_productivity_tools:
 base_system_tools:
   - fatrace
   - fdupes
+  - eza  # modern replacement for `ls`
+  - zoxide  # a smarter `cd` command
   - gnome-calculator
   - progress
   - pwgen
