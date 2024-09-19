@@ -145,3 +145,6 @@ export VAGRANT_DEFAULT_PROVIDER='virtualbox'
 
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
+
+# initialize zoxide
+eval "$(zoxide init zsh)"
