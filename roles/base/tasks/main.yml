@@ -165,12 +165,10 @@
         name: flathub
         state: present
         flatpakrepo_url: "{{ base_flatpakrepo_url }}"
-        method: user
 
     - name: install flatpak apps from flathub
       community.general.flatpak:
         name: "{{ base_flatpak_flathub_apps }}"
         state: present
-        method: user
 
 ...
