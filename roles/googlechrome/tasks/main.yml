@@ -14,6 +14,6 @@
 
 - name: install latest google chrome
   ansible.builtin.dnf:
-    name: google-chrome-stable
+    name: "{{ googlechrome_packages }}"
 
 ...
