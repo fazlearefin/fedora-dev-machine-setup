@@ -21,6 +21,8 @@ base_productivity_tools:
   - qalculate
 
 base_system_tools:
+  - btop  # Modern and colorful command line resource monitor that shows usage and stats
+  - htop
   - fatrace
   - fdupes
   - eza  # modern replacement for `ls`
@@ -32,6 +34,8 @@ base_system_tools:
   - gnome-extensions-app
   - gnome-shell-extension-dash-to-dock
   - trash-cli
+  - tilix  # A tiling terminal emulator for Linux using GTK+ 3
+#  - blackbox-terminal
 #  - syncthing
 
 base_system_tools_laptop:
@@ -59,8 +63,7 @@ base_developer_tools:
   - bpython
   - black
   - cargo
-  - btop  # Modern and colorful command line resource monitor that shows usage and stats
-  - cloc
+  - cloc  # cloc counts blank lines, comment lines, and physical lines of source code in many programming languages
   - clusterssh
   - python3-csvkit
   - curl
@@ -79,13 +82,12 @@ base_developer_tools:
   - git-extras
   - gitg
   - golang-go
-  - htop
   - httpie
   - inotify-tools
   - jq
   - makeself
   - meld
-  - miller
+  - miller  # `mlr` is for querying, shaping, and reformatting data files in various formats including CSV, TSV, JSON, and JSON Lines
   - moreutils
   - most
   - mtr
@@ -108,7 +110,6 @@ base_developer_tools:
   - python3-poetry
   - python3-autopep8
   - qemu-tools
-  - ranger
   - rclone
   - recode
   - remmina
@@ -116,27 +117,26 @@ base_developer_tools:
   - ripgrep  # launch using rg from the cli
   - ruby
   - shellcheck
-  - siege
+  - siege  # HTTP loadtesting and benchmarking tool
   - socat
   - sshfs
   - sshpass
   - sshuttle
   - stow  # symlink manager
-  - tig
-  - tilix  # A tiling terminal emulator for Linux using GTK+ 3
-#  - blackbox-terminal
   - tmux
-  - python3-tmuxp
+  - python3-tmuxp  # `tmuxp` is a session manager for tmux
   - tree
   - uget
   - vim
   - xsel
   - yamllint
-  - zeal
+  - yq
+#  - zeal
 
 # uses pipx to install python pip packages in a virtualized environment
 base_developer_tools_pipx:
   - ruff
+  - mitmproxy
 
 base_media_tools:
   - ffmpeg-free
@@ -167,6 +167,6 @@ base_permanent_night_light:
 base_flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
 
 base_flatpak_flathub_apps:
-  - md.obsidian.Obsidian
+  - md.obsidian.Obsidian  # personal knowledge base and note-taking software application that operates on Markdown files
 
 ...
