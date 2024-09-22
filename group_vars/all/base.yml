@@ -122,7 +122,6 @@ base_developer_tools:
   - sshfs
   - sshpass
   - sshuttle
-  - stow  # symlink manager
   - tmux
   - python3-tmuxp  # `tmuxp` is a session manager for tmux
   - tree
