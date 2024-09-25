@@ -1,0 +1,4 @@
+---
+
+harden_system_redundant_packages:
+  - passim

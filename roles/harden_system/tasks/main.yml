@@ -1,0 +1,30 @@
+---
+
+- name: Remove redundant packages often starting unnecessary services
+  ansible.builtin.dnf:
+    name: "{{ harden_system_redundant_packages }}"
+    state: absent
+
+- name: Turn off Link-Local Multicast Name Resolution (LLMNR)
+  block:
+    - name: Create directory /etc/systemd/resolved.conf.d
+      ansible.builtin.file:
+        path: /etc/systemd/resolved.conf.d
+        state: directory
+
+    - name: Create custom options file
+      ansible.builtin.copy:
+        owner: root
+        group: root
+        mode: '0644'
+        dest: /etc/systemd/resolved.conf.d/options.conf
+        content: |
+          [Resolve]
+          LLMNR=no
+
+    # - name: Restart systemd-resolved service
+    #   ansible.builtin.systemd:
+    #     name: systemd-resolved
+    #     state: restarted
+    #     daemon_reload: true
+
