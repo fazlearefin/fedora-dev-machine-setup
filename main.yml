@@ -1,4 +1,5 @@
 ---
+- import_playbook: harden_system.yml
 - import_playbook: base.yml
 - import_playbook: zsh.yml
 - import_playbook: terminal_customizations.yml
@@ -9,6 +10,5 @@
 - import_playbook: hashicorp.yml
 - import_playbook: googlechrome.yml
 - import_playbook: virtualization.yml
-- import_playbook: harden_system.yml
 - import_playbook: post_install.yml
 ...

@@ -16,6 +16,10 @@ I am a DevSecOps Engineer and my daily job include working with AWS, docker, ans
 
 Summary of packages that get installed and configured based on roles:
 
+- **role: harden_system**
+  - Remove *passim* package and thereby stop *passimd* service listening on 0.0.0.0
+  - Disable Link-Local Multicast Name Resolution (LLMNR) listening on 0.0.0.0
+  - Create and activate a new firewalld zone *FedoraWsHardened* which DROPS all incoming requests
 - **role: base**
   - set default system editor to vim instead of nano
   - enable firewalld firewall

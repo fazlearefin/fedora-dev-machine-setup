@@ -21,10 +21,23 @@
         content: |
           [Resolve]
           LLMNR=no
+      notify: restart systemd-resolved
 
-    # - name: Restart systemd-resolved service
-    #   ansible.builtin.systemd:
-    #     name: systemd-resolved
-    #     state: restarted
-    #     daemon_reload: true
+- name: Create new Firewalld zone with hardened rules
+  block:
+    - name: Create a new firewalld zone called 'FedoraWsHardened'
+      ansible.posix.firewalld:
+        zone: FedoraWsHardened
+        state: present
+        permanent: yes
 
+    - name: Set the target of 'FedoraWsHardened' zone to DROP
+      ansible.posix.firewalld:
+        zone: FedoraWsHardened
+        target: DROP
+        state: present
+        permanent: yes
+
+    - name: Set 'FedoraWsHardened' zone as the default zone
+      ansible.builtin.command: firewall-cmd --set-default-zone=FedoraWsHardened
+      notify: reload firewalld
