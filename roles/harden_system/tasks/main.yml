@@ -31,14 +31,14 @@
       ansible.posix.firewalld:
         zone: FedoraWsHardened
         state: present
-        permanent: yes
+        permanent: true
 
     - name: Set the target of 'FedoraWsHardened' zone to DROP
       ansible.posix.firewalld:
         zone: FedoraWsHardened
         target: DROP
         state: present
-        permanent: yes
+        permanent: true
 
     - name: Reload firewalld for new zone to be picked up
       ansible.builtin.systemd_service:
