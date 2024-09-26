@@ -21,6 +21,7 @@ base_productivity_tools:
   - qalculate
 
 base_system_tools:
+  - alacritty  # A cross-platform, OpenGL terminal emulator
   - btop  # Modern and colorful command line resource monitor that shows usage and stats
   - htop
   - fatrace
