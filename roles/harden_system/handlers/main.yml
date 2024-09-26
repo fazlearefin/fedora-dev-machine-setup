@@ -1,10 +1,5 @@
 ---
 
-- name: Reload firewalld
-  ansible.builtin.systemd_service:
-    name: firewalld
-    state: reloaded
-
 - name: Restart systemd-resolved
   ansible.builtin.systemd_service:
     name: systemd-resolved

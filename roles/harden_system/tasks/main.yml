@@ -40,6 +40,10 @@
         state: present
         permanent: yes
 
+    - name: Reload firewalld for new zone to be picked up
+      ansible.builtin.systemd_service:
+        name: firewalld
+        state: reloaded
+
     - name: Set 'FedoraWsHardened' zone as the default zone
       ansible.builtin.command: firewall-cmd --set-default-zone=FedoraWsHardened
-      notify: reload firewalld
