@@ -1,15 +1,15 @@
 #!/bin/zsh
 
 function update_fedora {
-  /usr/bin/sudo dnf -y upgrade --refresh
-  /usr/bin/sudo dnf autoremove -y
-  /usr/bin/sudo dnf clean all
-  /usr/bin/sudo flatpak update -y
+    /usr/bin/sudo dnf -y upgrade --refresh
+    /usr/bin/sudo dnf autoremove -y
+    /usr/bin/sudo dnf clean all
+    /usr/bin/sudo flatpak update -y
 }
 
 # a locked-down firefox instance running inside a sandbox
 function safefox {
-  /usr/bin/firejail --name=safe-firefox --seccomp --private --private-dev --private-tmp --protocol=inet firefox --new-instance --no-remote --safe-mode --private-window $1
+    /usr/bin/firejail --name=safe-firefox --seccomp --private --private-dev --private-tmp --protocol=inet firefox --new-instance --no-remote --safe-mode --private-window $1
 }
 
 # update existing vagrant boxes
@@ -78,3 +78,42 @@ function night_light_high {
     gsettings set org.gnome.settings-daemon.plugins.color night-light-temperature 3700
 }
 ### END night light control ###
+
+# archive extraction
+# usage: extract <file>
+function extract {
+    if [ -z "$1" ]; then
+        # display usage if no parameters given
+        echo "Usage: ex <path/file_name>.<zip|rar|bz2|gz|tar|tbz2|tgz|Z|7z|xz|ex|tar.bz2|tar.gz|tar.xz>"
+        echo "       extract <path/file_name_1.ext> [path/file_name_2.ext] [path/file_name_3.ext]"
+    else
+        for n in "$@"
+        do
+        if [ -f "$n" ] ; then
+            case "${n%,}" in
+              *.cbt|*.tar.bz2|*.tar.gz|*.tar.xz|*.tbz2|*.tgz|*.txz|*.tar)
+                            tar xvf "$n"       ;;
+              *.lzma)      unlzma ./"$n"      ;;
+              *.bz2)       bunzip2 ./"$n"     ;;
+              *.cbr|*.rar)       unrar x -ad ./"$n" ;;
+              *.gz)        gunzip ./"$n"      ;;
+              *.cbz|*.epub|*.zip)       unzip ./"$n"       ;;
+              *.z)         uncompress ./"$n"  ;;
+              *.7z|*.arj|*.cab|*.cb7|*.chm|*.deb|*.dmg|*.iso|*.lzh|*.msi|*.pkg|*.rpm|*.udf|*.wim|*.xar)
+                            7z x ./"$n"        ;;
+              *.xz)        unxz ./"$n"        ;;
+              *.exe)       cabextract ./"$n"  ;;
+              *.cpio)      cpio -id < ./"$n"  ;;
+              *.cba|*.ace)      unace x ./"$n"      ;;
+              *)
+                            echo "ex: '$n' - unknown archive method"
+                            return 1
+                            ;;
+            esac
+        else
+            echo "'$n' - file does not exist"
+            return 1
+        fi
+        done
+    fi
+}
