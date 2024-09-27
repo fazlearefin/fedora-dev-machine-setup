@@ -29,6 +29,7 @@
         - docker
 
 - block:
+  # TODO: revise this task once Fedora official repo releases virtualbox-guest-additions-7.1
   - name: Remove conflicting packages
     ansible.builtin.dnf:
       name: "{{ item }}"
