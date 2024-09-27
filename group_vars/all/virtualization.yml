@@ -16,4 +16,5 @@ virtualization_virtualbox_extension_pack:
   local_path: /tmp/Oracle_VirtualBox_Extension_Pack.vbox-extpack
 virtualization_virtualbox_packages:
   - VirtualBox-7.1    # must match the extension pack version
-  # - virtualbox-guest-additions  # comes from the official repo and so often not compatible with VirtualBox packge from Oracle
+virtualization_virtualbox_conflict_packages:
+  - virtualbox-guest-additions  # comes from the official repo and conflicts with package from Oracle repo

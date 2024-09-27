@@ -29,6 +29,12 @@
         - docker
 
 - block:
+  - name: Remove conflicting packages
+    ansible.builtin.dnf:
+      name: "{{ item }}"
+      state: absent
+    with_items: "{{ virtualization_virtualbox_conflict_packages }}"
+
   - name: add virtualbox rpm key
     ansible.builtin.rpm_key:
       key: "{{ virtualization_virtualbox_rpm_key_url }}"
