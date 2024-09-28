@@ -1,4 +1,4 @@
-#!/bin/zsh
+# .shell_functions.sh - Custom shell functions for convenience and system management
 
 function update_fedora {
     /usr/bin/sudo dnf -y upgrade --refresh
