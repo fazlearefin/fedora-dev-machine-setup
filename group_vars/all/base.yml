@@ -34,6 +34,7 @@ base_system_tools:
   - gnome-tweaks
   - gnome-extensions-app
   - gnome-shell-extension-dash-to-dock
+  - strace
   - trash-cli
   - tilix  # A tiling terminal emulator for Linux using GTK+ 3
 #  - blackbox-terminal
