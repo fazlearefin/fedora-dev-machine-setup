@@ -55,7 +55,6 @@ base_download_tools:
 
 base_developer_tools:
   - '@Development Tools'
-  - 2to3
   - android-tools
   - ansible
   - ansible-lint
@@ -78,7 +77,6 @@ base_developer_tools:
   - fzf
   - g++
   - gawk
-  - apostrophe
   - git
   - git-delta
   - git-extras
