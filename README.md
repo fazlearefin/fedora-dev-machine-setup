@@ -1,4 +1,4 @@
-# fedora-dev-machine-setup | Fedora Workstation 40
+# fedora-dev-machine-setup | Fedora Workstation 41
 
 ## Description
 
@@ -6,7 +6,7 @@ This repo contains Ansible playbooks to configure your system as a development m
 
 The playbooks have been tested on:
 
-- **Fedora Workstation 40**
+- **Fedora Workstation 41**
 
 ---
 
@@ -28,7 +28,7 @@ Summary of packages that get installed and configured based on roles:
   - install archiving tools like zip, rar, etc
   - install libreoffice
   - install foliate, an e-book reader
-  - install glow, apostrophe and Obsidian markdown viewers/editors
+  - install Obsidian markdown editor
   - install power management tools like [TLP](https://github.com/linrunner/TLP)
   - install development related packages like android-tools, awscli, httpie, clusterssh, docker, filezilla, golang, poetry, etc
   - install code fomatters and linters like black, ruff, ansible-lint, etc
