@@ -81,6 +81,7 @@ base_developer_tools:
   - git-delta
   - git-extras
   - gitg
+  - glow
   - golang-go
   - httpie
   - inotify-tools
@@ -147,7 +148,6 @@ base_media_tools:
   - vlc
 
 base_golang_tools:
-  #- github.com/charmbracelet/glow@latest  # Render markdown on the CLI
   - github.com/jesseduffield/lazygit@latest  # simple terminal UI for git commands
   #- github.com/wagoodman/dive@latest  # tool for exploring each layer in a docker image
   #- oss.terrastruct.com/d2@latest  # d2 diagram as code tool
