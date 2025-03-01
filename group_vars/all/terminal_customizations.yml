@@ -24,6 +24,7 @@ terminal_customizations_nerd_fonts:
   - https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/VictorMono/Bold/VictorMonoNerdFontMono-Bold.ttf
   - https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/VictorMono/Italic/VictorMonoNerdFontMono-Italic.ttf
   - https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/VictorMono/Regular/VictorMonoNerdFontMono-Regular.ttf
+  - https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/DroidSansMono/DroidSansMNerdFontMono-Regular.otf
 
 terminal_customizations_tmux_plugin_repo: "https://github.com/tmux-plugins/tpm"
 
