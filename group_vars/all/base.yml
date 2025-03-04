@@ -37,6 +37,7 @@ base_system_tools:
   - strace
   - trash-cli
   - tilix  # A tiling terminal emulator for Linux using GTK+ 3
+  - qrencode
 #  - blackbox-terminal
 #  - syncthing
 
