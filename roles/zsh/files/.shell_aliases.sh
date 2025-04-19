@@ -27,12 +27,12 @@ alias proxy_off='unset http_proxy; unset https_proxy'
 #alias lsg='eza -lah --color=auto --group-directories-first --git' # Show git status in file listings
 
 # Changing "ls" to "lsd"
-#alias ls='eza --color=auto --group-directories-first'
-#alias l.='eza --color=auto --group-directories-first -a | egrep "^\."' # show only dotfiles
-#alias l1='eza -1 -a --color=auto --group-directories-first'             # Single column output
-#alias ll='eza -al --color=auto --group-directories-first'  # long format
-#alias lss='eza -a -1 --color=auto --group-directories-first --sort=size'
-#alias lsm='eza -a -1 --color=auto --group-directories-first --sort=time'
-#alias lst='eza -a --tree --color=auto --group-directories-first' # tree listing
-#alias lsi='eza -lah --color=auto --group-directories-first --icon=always'
-#alias lsg='eza -lah --color=auto --group-directories-first --git' # Show git status in file listings
+#alias ls='lsd --color=auto --group-directories-first'
+#alias l.='lsd --color=auto --group-directories-first -a | egrep "^\."' # show only dotfiles
+#alias l1='lsd -1 -a --color=auto --group-directories-first'             # Single column output
+#alias ll='lsd -al --color=auto --group-directories-first'  # long format
+#alias lss='lsd -a -1 --color=auto --group-directories-first --sort=size'
+#alias lsm='lsd -a -1 --color=auto --group-directories-first --sort=time'
+#alias lst='lsd -a --tree --color=auto --group-directories-first' # tree listing
+#alias lsi='lsd -lah --color=auto --group-directories-first --icon=always'
+#alias lsg='lsd -lah --color=auto --group-directories-first --git' # Show git status in file listings
