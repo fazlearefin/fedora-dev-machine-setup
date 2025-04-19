@@ -26,7 +26,7 @@ base_system_tools:
   - htop
   - fatrace
   - fdupes
-  - eza  # modern replacement for `ls`
+  # - eza  # modern replacement for `ls`  # TODO: not available in Fedora 42
   - zoxide  # a smarter `cd` command
   - gnome-calculator
   - progress
@@ -34,6 +34,7 @@ base_system_tools:
   - gnome-tweaks
   - gnome-extensions-app
   - gnome-shell-extension-dash-to-dock
+  - lsd  # the next gen `ls` command
   - strace
   - trash-cli
   - tilix  # A tiling terminal emulator for Linux using GTK+ 3
