@@ -35,6 +35,9 @@ vscode_extensions:
   - Catppuccin.catppuccin-vsc-icons  # Catppuccin icons
   - bierner.markdown-mermaid  # markdown preview mermaid support
 #  - terrastruct.d2  # diagram scripting language that turns text to diagrams
-#  - rust-lang.rust-analyzer  # rust linter
+  - rust-lang.rust-analyzer  # rust linter
+  - vadimcn.vscode-lldb  # native debugger powered by LLDB. Debug C++, Rust and other compiled languages
+  - usernamehw.errorlens  # Improve highlighting of errors, warnings and other language diagnostics
+  - tamasfe.even-better-toml  # TOML support
 
 ...
