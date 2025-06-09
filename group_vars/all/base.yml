@@ -119,6 +119,8 @@ base_developer_tools:
   - renameutils
   - ripgrep  # launch using rg from the cli
   - ruby
+  - rust  # rust compiler
+  - rustfmt  # rust code formatter
   - shellcheck
   - siege  # HTTP loadtesting and benchmarking tool
   - socat
