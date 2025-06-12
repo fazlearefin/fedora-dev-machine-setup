@@ -158,7 +158,7 @@ base_golang_tools:
 
 base_cargo_packages:
   - tlrc  # official tldr rust client
-  # - xh  # drop-in replacement for httpie/http  # TODO: issues compiling in Fedora 42
+  - xh  # drop-in replacement for httpie/http
 
 base_permanent_night_light:
   night_light_enabled: false              # set this to true for permanently turning on night light
