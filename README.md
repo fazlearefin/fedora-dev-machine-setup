@@ -1,8 +1,8 @@
-# fedora-dev-machine-setup | Fedora Workstation 41
+# fedora-dev-machine-setup | Fedora Workstation 42
 
 ## Description
 
-This repo contains Ansible playbooks to configure your system as a development machine upon a clean install.
+This repo contains Ansible playbooks to configure your system as a development machine after a clean install.
 
 The playbooks have been tested on:
 
@@ -12,85 +12,95 @@ The playbooks have been tested on:
 
 ## What gets installed and configured?
 
-I am a DevSecOps Engineer and my daily job include working with AWS, docker, ansible, terraform, etc. So if you are in a similar profession the installed system will suit your needs. It is also easy to extend using Ansible roles.
+I am a DevSecOps Engineer, and my daily job includes working with AWS, Docker, Ansible, Terraform, etc. If you're in a similar profession, the installed system will suit your needs. It is also easy to extend using Ansible roles.
 
 Summary of packages that get installed and configured based on roles:
 
 - **role: harden_system**
-  - Remove *passim* package and thereby stop *passimd* service listening on 0.0.0.0
+  - Remove the `passim` package and stop the `passimd` service from listening on 0.0.0.0
   - Disable Link-Local Multicast Name Resolution (LLMNR) listening on 0.0.0.0
-  - Create and activate a new firewalld zone *FedoraWsHardened* which DROPS all incoming requests
+  - Create and activate a new `firewalld` zone `FedoraWsHardened`, which DROPS all incoming requests
+
 - **role: base**
-  - set default system editor to vim instead of nano
-  - enable firewalld firewall
-  - tune system swappiness so that swapping is greatly reduced
-  - upgrade all packages
-  - install archiving tools like zip, rar, etc
-  - install libreoffice
-  - install foliate, an e-book reader
-  - install Obsidian markdown editor
-  - install power management tools like [TLP](https://github.com/linrunner/TLP)
-  - install development related packages like android-tools, awscli, httpie, clusterssh, docker, filezilla, golang, poetry, etc
-  - install code fomatters and linters like black, ruff, ansible-lint, etc
-  - setup golang directories
-  - install download tools like axel, transmission, wget, aria2
-  - install image, audio and video packages like vlc, totem, gimp, imagemagick, etc
-  - install and configure ssh server if not set to `laptop_mode`
-  - option to turn on night light settings for eye comfort (set `base_permanent_night_light.night_light_enabled` to `True`)
-  - enable `fzf` fuzzy finder in zsh terminal
-  - install [lazygit](https://github.com/jesseduffield/lazygit)
-  - install terminal emulators Tilix and Alacritty
-  - install dive, a tool for exploring each layer in a docker image
+  - Set the default system editor to Vim instead of Nano
+  - Enable the `firewalld` firewall
+  - Tune system swappiness to greatly reduce swapping
+  - Upgrade all packages
+  - Install archiving tools like zip, rar, etc.
+  - Install LibreOffice
+  - Install Foliate, an e-book reader
+  - Install Obsidian markdown editor
+  - Install power management tools like [TLP](https://github.com/linrunner/TLP)
+  - Install development tools like android-tools, awscli, httpie, clusterssh, Docker, FileZilla, Golang, Poetry, etc.
+  - Install code formatters and linters like Black, Ruff, ansible-lint, etc.
+  - Set up Golang directories
+  - Install download tools like Axel, Transmission, Wget, Aria2
+  - Install image, audio, and video tools like VLC, Totem, GIMP, ImageMagick, etc.
+  - Install and configure an SSH server if not set to `laptop_mode`
+  - Option to turn on Night Light for eye comfort (set `base_permanent_night_light.night_light_enabled` to `True`)
+  - Enable `fzf` fuzzy finder in the Zsh terminal
+  - Install [lazygit](https://github.com/jesseduffield/lazygit)
+  - Install terminal emulators Tilix and Alacritty
+  - Install Dive, a tool for exploring each layer in a Docker image
+
 - **role: zsh**
-  - install zsh package and set user shell to zsh
-  - install antigen zsh plugin manager
-  - copy and enable sample `~/.zshrc` file if one does not exist
-    - contains function to stop ssh-agent from asking for encrypted ssh key password repeatedly when launching new terminal
-    - adds additional shell aliases and functions in `~/.shell_aliases` and `~/.shell_functions`
-  - install ohmyzsh/ohmyzsh and enable some bundled plugins
-  - enable bullet train zsh theme (others like p10k can be configured as well)
+  - Install the Zsh package and set the user shell to Zsh
+  - Install Antigen Zsh plugin manager
+  - Copy and enable a sample `~/.zshrc` file if one doesn't exist
+    - Includes a function to stop `ssh-agent` from repeatedly asking for encrypted SSH key passwords in new terminals
+    - Adds additional aliases and functions in `~/.shell_aliases` and `~/.shell_functions`
+  - Install ohmyzsh/ohmyzsh and enable bundled plugins
+  - Enable the Bullet Train Zsh theme (others like p10k can be configured as well)
+
 - **role: terminal_customizations**
-  - download and install some nerd fonts from ryanoasis/nerd-fonts; these are mono fonts ideal for use in terminal or programming editors
-  - copy and enable sample tilix config file with configured nerd font
-  - copy and enable sample tmux config file if one does not exist
-  - copy and enable sample `~/.tmux.conf` file with [tmux plugin manager](https://github.com/tmux-plugins/tpm) and several tmux plugins
-    - open Tilix terminal and run `tmux` command, or enable custom command option in Tilix
-    - edit `~/.tmux.conf` if necessary
+  - Download and install Nerd Fonts from ryanoasis/nerd-fonts; ideal for terminal and programming editors
+  - Copy and enable a sample Tilix config file with configured Nerd Font
+  - Copy and enable a sample Tmux config file if one doesn't exist
+  - Copy and enable `~/.tmux.conf` with [tmux plugin manager](https://github.com/tmux-plugins/tpm) and several plugins
+    - Open Tilix and run the `tmux` command, or enable a custom command option in Tilix
+    - Edit `~/.tmux.conf` as needed
+
 - **role: neovim**
-  - install neovim packages
-  - install [lazyvim](https://www.lazyvim.org) neovim distribution
-    - open `nvim` from terminal and let the plugins get installed automatically on the initial launch
+  - Install Neovim packages
+  - Install [LazyVim](https://www.lazyvim.org) Neovim distribution
+    - Open `nvim` from terminal; plugins will install automatically on first launch
+
 - **role: vscode**
-  - add Visual Studio Code apt repo
-  - install Visual Studio Code
-  - install some popular Visual Studio Code extensions
+  - Add the Visual Studio Code APT repo
+  - Install Visual Studio Code
+  - Install popular extensions
+
 - **role: privacy**
-  - install tor
-  - configure tor to run at boot and prevent using certain countries as exit nodes
-    - edit `/etc/tor/torrc` if necessary
-  - install proxychains
-  - configure proxychains to use tor. View [my Medium story](https://fazlearefin.medium.com/tunneling-traffic-over-tor-network-using-proxychains-34c77ec32c0f) to see how to use it
-    - edit `/etc/proxychains.conf` if necessary
-  - install metadata anonymization toolkit
+  - Install Tor
+  - Configure Tor to run at boot and avoid certain countries as exit nodes
+    - Edit `/etc/tor/torrc` if needed
+  - Install ProxyChains
+  - Configure ProxyChains to use Tor. See [my Medium story](https://fazlearefin.medium.com/tunneling-traffic-over-tor-network-using-proxychains-34c77ec32c0f) for usage
+    - Edit `/etc/proxychains.conf` if needed
+  - Install a metadata anonymization toolkit
+
 - **role: security**
-  - install ClamAV (antivirus) and ClamAV GNOME interface. Manual scan from nautilus or from CLI using `clamscan`; clamd not installed for its huge memory footprint
-  - install firejail for sanboxing applications
+  - Install ClamAV (antivirus) and its GNOME interface. Run scans manually via Nautilus or CLI using `clamscan`; `clamd` is not installed due to high memory usage
+  - Install Firejail for sandboxing applications
+
 - **role: virtualization**
-  - enable docker ce repo and install docker packages
-  - enable Oracle VirtualBox repo and install virtualbox packages
+  - Enable the Docker CE repo and install Docker packages
+  - Enable the Oracle VirtualBox repo and install VirtualBox packages
+
 - **role: hashicorp**
-  - install vagrant, terraform, packer
+  - Install Vagrant, Terraform, and Packer
+
 - **role: googlechrome**
-  - add Google Chrome apt repo
-  - install Google Chrome
+  - Add the Google Chrome APT repo
+  - Install Google Chrome
 
 ---
 
-## Step 0 | Pre-requisites for running the ansible playbooks
+## Step 0 | Prerequisites for running the Ansible playbooks
 
-On the system which you are going to setup using Ansible, perform these steps.
+On the system you are about to configure using Ansible, perform the following:
 
-You need to install `ansible` and `git` before running the playbooks.
+Install `ansible` and `git` first:
 
 ```bash
 /usr/bin/sudo dnf update -y
@@ -104,47 +114,45 @@ cd fedora-dev-machine-setup
 
 ## Step 1 | Running the playbooks to configure your system
 
-**Invoke the following as yourself, the primary user of the system. Do not run as `root`.**
+**Run the following as yourself (the primary user), not as `root`:**
 
 ```bash
 ansible-playbook main.yml -vv -e "{ laptop_mode: True }" -e "local_username=$(id -un)" -K
 ```
 
-Enter the sudo password when asked for `BECOME password:`.
+Enter your sudo password when prompted for `BECOME password:`.
 
-The `main.yml` playbook will take anything from 15 minutes to an hour to complete.
+The `main.yml` playbook can take between 15 minutes to an hour to finish.
 
-After all is done, give your laptop a new life by rebooting.
+Once complete, reboot your laptop for all changes to take effect.
 
-> ### What is this `laptop_mode`?
+> ### What is `laptop_mode`?
 
-#### Setting this to `True`
+#### When set to `True`:
+- Installs packages like [TLP](https://github.com/linrunner/TLP) for battery optimization
 
-- will install some packages like [TLP](https://github.com/linrunner/TLP) for battery economy
-
-#### Setting this to `False`
-
-- will NOT install some packages like [TLP](https://github.com/linrunner/TLP) for battery economy
+#### When set to `False`:
+- Skips installing battery-saving packages like [TLP](https://github.com/linrunner/TLP)
 
 ---
 
 ## Known Issues
 
-- If the ansible playbook halts after completing a few tasks, simply run the playbook again. Since most of the tasks are idempotent, running the playbook multiple times won't break anything.
-- If your terminal shows any weird characters because of installing one of the zsh themes, simply change the font to a suitable Nerd Font from the terminal's settings.
-- If you do not like the fuzzy finder completions in your terminal, remove or comment out the `#fzf` lines in your `~/.zshrc` (this is not a known issue but a feature)
-- When launching the terminal, having some [ohmyzsh](https://github.com/ohmyzsh/ohmyzsh) plugins like **docker** enabled results in the error: `tee: <snip> No such file or directory`. You can easily fix this by creating the missing directory manually: `mkdir -p ~/.antigen/bundles/robbyrussell/oh-my-zsh/cache/completions`.
+- If the Ansible playbook stops mid-way, rerun it. Most tasks are idempotent, so re-execution is safe.
+- If your terminal displays strange characters after installing a Zsh theme, change the font to a Nerd Font in the terminal's settings.
+- If you dislike fuzzy finder completions, comment out the `#fzf` lines in your `~/.zshrc` (this is a feature, not a bug).
+- Some [ohmyzsh](https://github.com/ohmyzsh/ohmyzsh) plugins like `docker` may cause an error such as `tee: <snip> No such file or directory` when launching the terminal. Fix this by running: `mkdir -p ~/.antigen/bundles/robbyrussell/oh-my-zsh/cache/completions`.
 
 ---
 
 ## Pull Requests and Forks
 
-You are more than welcome to send any pull requests. However, the intention of this repo is to suit my development needs. So it might be better if you *fork* this repo instead for your own needs and personalization.
+Pull requests are welcome! However, this repo is tailored to my own development needs. For your own workflow, it's probably better to fork it and customize as you like.
 
 ---
 
 ## Donations
 
-If you think my work helped you in some way saving you time and effort, I am happy to receive any amount of donation. However, the code in this repo is completely free; absolutely *no strings attached*.
+If this setup saved you time or effort, feel free to donate—though the repo is entirely free and open, with no strings attached.
 
 Bitcoin (BTC): `bc1qzlhpm94vtk2ht67etdutzcy2g5an5v6g36tp0m`
