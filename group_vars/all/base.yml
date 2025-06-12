@@ -119,6 +119,7 @@ base_developer_tools:
   - renameutils
   - ripgrep  # launch using rg from the cli
   - ruby
+  - ruff
   - rust  # rust compiler
   - rustfmt  # rust code formatter
   - shellcheck
@@ -139,7 +140,6 @@ base_developer_tools:
 
 # uses pipx to install python pip packages in a virtualized environment
 base_developer_tools_pipx:
-  - ruff
   - mitmproxy
 
 base_media_tools:
