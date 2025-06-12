@@ -56,7 +56,7 @@ base_download_tools:
   - yt-dlp-zsh-completion
 
 base_developer_tools:
-  - '@Development Tools'
+  - '@development-tools'
   - android-tools
   - ansible
   - ansible-lint
