@@ -26,7 +26,6 @@ base_system_tools:
   - htop
   - fatrace
   - fdupes
-  # - eza  # modern replacement for `ls`  # TODO: not available in Fedora 42
   - zoxide  # a smarter `cd` command
   - gnome-calculator
   - progress

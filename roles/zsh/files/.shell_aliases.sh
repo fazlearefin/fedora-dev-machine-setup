@@ -15,17 +15,6 @@ alias proxy_tor_on='export http_proxy=socks5://localhost:9050; export https_prox
 alias proxy_status="env | grep -i 'http_proxy\|https_proxy'"
 alias proxy_off='unset http_proxy; unset https_proxy'
 
-# Changing "ls" to "eza" (this is not available in Fedora 42; use lsd instead)
-#alias ls='eza --color=auto --group-directories-first'
-#alias l.='eza --color=auto --group-directories-first -a | egrep "^\."' # show only dotfiles
-#alias l1='eza -1 -a --color=auto --group-directories-first'             # Single column output
-#alias ll='eza -al --color=auto --group-directories-first'  # long format
-#alias lss='eza -a -1 --color=auto --group-directories-first --sort=size'
-#alias lsm='eza -a -1 --color=auto --group-directories-first --sort=modified'
-#alias lst='eza -aT --color=auto --group-directories-first' # tree listing
-#alias lsi='eza -lah --color=auto --group-directories-first --icons'
-#alias lsg='eza -lah --color=auto --group-directories-first --git' # Show git status in file listings
-
 # Changing "ls" to "lsd"
 #alias ls='lsd --color=auto --group-directories-first'
 #alias l.='lsd --color=auto --group-directories-first -a | egrep "^\."' # show only dotfiles
