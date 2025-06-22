@@ -1,13 +1,13 @@
 ---
 
-- name: Install neovim packages
+- name: Install Neovim packages
   ansible.builtin.dnf:
     name: "{{ neovim_dnf_packages }}"
     state: present
 
 
 - block:
-    - name: Clone lazyvim starter git repo
+    - name: Clone LazyVim starter git repo
       ansible.builtin.git:
         repo: "{{ neovim_lazyvim_starter_url }}"
         dest: "~{{ local_username }}/.config/nvim"

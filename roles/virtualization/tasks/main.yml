@@ -1,27 +1,27 @@
 ---
 
 - block:
-  - name: add docker rpm key
+  - name: Add docker rpm key
     ansible.builtin.rpm_key:
       key: "{{ virtualization_docker_rpm_key_url }}"
 
-  - name: fetch docer repo file
+  - name: Fetch docer repo file
     ansible.builtin.get_url:
       url: "{{ virtualization_docker_repo_file_url }}"
       dest: /etc/yum.repos.d/docker.repo
       mode: '0644'
 
-  - name: install docker packages
+  - name: Install docker packages
     ansible.builtin.dnf:
       name: "{{ virtualization_docker_packages }}"
 
-  - name: enable docker service on boot
+  - name: Enable docker service on boot
     ansible.builtin.systemd:
       name: docker.service
       state: started
-      enabled: yes
+      enabled: true
 
-  - name: add user to docker group
+  - name: Add user to docker group
     ansible.builtin.user:
       name: "{{ local_username }}"
       append: true
@@ -36,17 +36,17 @@
       state: absent
     with_items: "{{ virtualization_virtualbox_conflict_packages }}"
 
-  - name: add virtualbox rpm key
+  - name: Add virtualbox rpm key
     ansible.builtin.rpm_key:
       key: "{{ virtualization_virtualbox_rpm_key_url }}"
 
-  - name: fetch virtualbox repo file
+  - name: Fetch virtualbox repo file
     ansible.builtin.get_url:
       url: "{{ virtualization_virtualbox_repo_file_url }}"
       dest: /etc/yum.repos.d/virtualbox.repo
       mode: '0644'
 
-  - name: install virtualbox packages
+  - name: Install virtualbox packages
     ansible.builtin.dnf:
       name: "{{ virtualization_virtualbox_packages }}"
 
@@ -58,7 +58,7 @@
   - name: Install Virtualbox Extension Pack
     ansible.builtin.command: bash -c "yes y | VBoxManage extpack install --replace {{ virtualization_virtualbox_extension_pack.local_path }}"
 
-  - name: add user to vboxuserss group
+  - name: Add user to vboxuserss group
     ansible.builtin.user:
       name: "{{ local_username }}"
       append: true

@@ -2,64 +2,64 @@
 
 - block:
 
-  - name: ensure firewalld service is running and enabled on boot
+  - name: Ensure firewalld service is running and enabled on boot
     ansible.builtin.systemd:
       name: firewalld
       state: started
       enabled: true
 
-  - name: enable firewall
+  - name: Enable firewall
     ansible.posix.firewalld:
       state: enabled
       permanent: true
 
 # It may be desirable to set this to zero, so that application memory is retained as long as possible at the expense
 # of the page cache. When there is still a memory shortage, the kernel can still use swapping.
-- name: tune system swappiness
+- name: Tune system swappiness
   ansible.posix.sysctl:
     name: vm.swappiness
     value: '0'
     state: present
 
-- name: update all installed packages to latest
+- name: Update all installed packages to latest
   ansible.builtin.dnf:
     update_only: true
     state: latest
 
-- name: install archiving tools
+- name: Install archiving tools
   ansible.builtin.dnf:
     name: "{{ base_archiving_tools }}"
     state: present
 
-- name: install productivity tools
+- name: Install productivity tools
   ansible.builtin.dnf:
     name: "{{ base_productivity_tools }}"
     state: present
 
-- name: install system tools
+- name: Install system tools
   ansible.builtin.dnf:
     name: "{{ base_system_tools }}"
     state: present
 
-- name: install system tools for laptop
+- name: Install system tools for laptop
   ansible.builtin.dnf:
     name: "{{ base_system_tools_laptop }}"
     state: present
   when: laptop_mode
 
-- name: install developer tools
+- name: Install developer tools
   ansible.builtin.dnf:
     name: "{{ base_developer_tools }}"
     state: present
 
-- name: install developer tools pipx packages
+- name: Install developer tools pipx packages
   community.general.pipx:
     name: "{{ item }}"
   with_items: "{{ base_developer_tools_pipx }}"
   become: true
   become_user: "{{ local_username }}"
 
-- name: create .ssh dir
+- name: Create .ssh dir
   ansible.builtin.file:
     path: "~{{ local_username }}/.ssh"
     state: directory
@@ -81,19 +81,19 @@
       ansible.builtin.lineinfile:
         path: "~{{ local_username }}/.bashrc"
         line: "{{ item }}"
-        create: yes
+        create: true
       with_items:
         - export GOPATH=$HOME/go
         - export PATH=$PATH:$GOPATH/bin
   become: true
   become_user: "{{ local_username }}"
 
-- name: install download tools
+- name: Install download tools
   ansible.builtin.dnf:
     name: "{{ base_download_tools }}"
     state: present
 
-- name: install media packages
+- name: Install media packages
   ansible.builtin.dnf:
     name: "{{ base_media_tools }}"
     state: present
@@ -113,38 +113,38 @@
 
 # make fstrim run daily rather than the default weekly schedule for SSD longevity
 - block:
-    - name: enable fstrim.timer
+    - name: Enable fstrim.timer
       ansible.builtin.systemd:
         name: fstrim.timer
         state: started
-        enabled: yes
+        enabled: true
 
-    - name: create systemd fstrim.timer override dir
+    - name: Create systemd fstrim.timer override dir
       ansible.builtin.file:
         path: /etc/systemd/system/fstrim.timer.d
         state: directory
         owner: root
         group: root
-        mode: 0755
+        mode: '0755'
 
-    - name: create override.conf file for fstrim.timer
+    - name: Create override.conf file for fstrim.timer
       ansible.builtin.copy:
         src: etc/systemd/system/fstrim.timer.d/override.conf
         dest: /etc/systemd/system/fstrim.timer.d/override.conf
         owner: root
         group: root
-        mode: 0644
+        mode: '0644'
 
-    - name: force systemd to reread configs
+    - name: Force systemd to reread configs
       ansible.builtin.systemd:
-        daemon_reload: yes
+        daemon_reload: true
 
-- name: make poetry create virtualenv dirs inside the project dir itself
+- name: Make poetry create virtualenv dirs inside the project dir itself
   ansible.builtin.command: "poetry config virtualenvs.in-project true"
   become: true
   become_user: "{{ local_username }}"
 
-- name: build and install golang binaries
+- name: Build and install golang binaries
   ansible.builtin.command: "go install {{ item }}"
   with_items: "{{ base_golang_tools }}"
   become: true
@@ -166,7 +166,7 @@
         state: present
         flatpakrepo_url: "{{ base_flatpakrepo_url }}"
 
-    - name: install flatpak apps from flathub
+    - name: Install flatpak apps from flathub
       community.general.flatpak:
         name: "{{ base_flatpak_flathub_apps }}"
         state: present

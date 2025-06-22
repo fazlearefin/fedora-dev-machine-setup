@@ -2,11 +2,11 @@
 
 - hosts: localhost
   tasks:
-    - name: remove redundant packages
+    - name: Remove redundant packages
       ansible.builtin.dnf:
           autoremove: true
 
-    - name: display post install message
+    - name: Display post install message
       ansible.builtin.debug:
         msg:
           - 'Manual steps left to do:'

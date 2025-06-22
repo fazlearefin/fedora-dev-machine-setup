@@ -128,10 +128,12 @@ Once complete, reboot your laptop for all changes to take effect.
 
 > ### What is `laptop_mode`?
 
-#### When set to `True`:
+#### When set to `True`
+
 - Installs packages like [TLP](https://github.com/linrunner/TLP) for battery optimization
 
-#### When set to `False`:
+#### When set to `False`
+
 - Skips installing battery-saving packages like [TLP](https://github.com/linrunner/TLP)
 
 ---
