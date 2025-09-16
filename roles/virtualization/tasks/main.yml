@@ -36,16 +36,6 @@
       state: absent
     with_items: "{{ virtualization_virtualbox_conflict_packages }}"
 
-  - name: Add virtualbox rpm key
-    ansible.builtin.rpm_key:
-      key: "{{ virtualization_virtualbox_rpm_key_url }}"
-
-  - name: Fetch virtualbox repo file
-    ansible.builtin.get_url:
-      url: "{{ virtualization_virtualbox_repo_file_url }}"
-      dest: /etc/yum.repos.d/virtualbox.repo
-      mode: '0644'
-
   - name: Install virtualbox packages
     ansible.builtin.dnf:
       name: "{{ virtualization_virtualbox_packages }}"

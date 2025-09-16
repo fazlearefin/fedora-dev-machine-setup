@@ -9,13 +9,11 @@ virtualization_docker_packages:
   - docker-buildx-plugin
   - docker-compose-plugin
 
-virtualization_virtualbox_repo_file_url: https://download.virtualbox.org/virtualbox/rpm/fedora/virtualbox.repo
-virtualization_virtualbox_rpm_key_url: https://www.virtualbox.org/download/oracle_vbox_2016.asc
 virtualization_virtualbox_extension_pack:
-  remote_url: https://download.virtualbox.org/virtualbox/7.1.0/Oracle_VirtualBox_Extension_Pack-7.1.0.vbox-extpack  # must match the virtualbox version getting installed
+  remote_url: https://download.virtualbox.org/virtualbox/7.2.2/Oracle_VirtualBox_Extension_Pack-7.2.2.vbox-extpack  # NOTE: must match the virtualbox version getting installed
   local_path: /tmp/Oracle_VirtualBox_Extension_Pack.vbox-extpack
 virtualization_virtualbox_packages:
-  - VirtualBox-7.1    # must match the extension pack version
+  - VirtualBox
 
 # TODO: revise this once Fedora official repo releases virtualbox-guest-additions-7.1
 virtualization_virtualbox_conflict_packages:
