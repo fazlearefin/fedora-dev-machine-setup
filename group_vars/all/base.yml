@@ -172,4 +172,6 @@ base_flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
 base_flatpak_flathub_apps:
   - md.obsidian.Obsidian  # personal knowledge base and note-taking software application that operates on Markdown files
 
+base_rpmfusion_free_repo_url: https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-42.noarch.rpm
+
 ...

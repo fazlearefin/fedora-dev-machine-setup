@@ -26,6 +26,11 @@
     update_only: true
     state: latest
 
+- name: Enable rpmfusion free repo
+  ansible.builtin.dnf:
+    name: "{{ base_rpmfusion_free_repo_url }}"
+    state: present
+
 - name: Install archiving tools
   ansible.builtin.dnf:
     name: "{{ base_archiving_tools }}"
