@@ -146,6 +146,7 @@ base_media_tools:
   - ffmpeg-free
   - gimp
   - ImageMagick
+  - libavcodec-freeworld
   - mediainfo
   - soundconverter
   - totem
