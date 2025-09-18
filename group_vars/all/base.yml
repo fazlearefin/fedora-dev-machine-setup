@@ -96,7 +96,7 @@ base_developer_tools:
   - nmap
   - nmap-ncat
   - nmon
-  - nodejs
+  # - nodejs
   - pandoc
   - parallel
   - pcre2-tools  # provides pcre2grep and pcre2test (perl-compatible regex)
